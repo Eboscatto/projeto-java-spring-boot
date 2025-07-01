@@ -2,12 +2,13 @@ package com.eboscatto.projetoJava.controller;
 
 import com.eboscatto.projetoJava.model.Post;
 import com.eboscatto.projetoJava.service.PostService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/posts")
 public class PostController {
     private final PostService service;
 
@@ -21,7 +22,7 @@ public class PostController {
     }
 
     @PostMapping
-    public Post criarPost(@RequestBody Post post) {
+    public Post criarPost(@RequestBody @Valid Post post) {
         return service.criar(post);
     }
 }

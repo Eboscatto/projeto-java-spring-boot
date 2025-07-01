@@ -1,9 +1,18 @@
 package com.eboscatto.projetoJava.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class Post {
+
+    @NotNull(message = "O userId é obrigatório.")
     private int userId;
     private int id;
+
+    @NotBlank(message = "O título não pode estar em branco.")
     private String title;
+
+    @NotBlank(message = "O corpo do post não pode estar vazio.")
     private String body;
 
     // Gertters e Setters
