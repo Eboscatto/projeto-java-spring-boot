@@ -26,7 +26,7 @@ Este projeto é uma API RESTful desenvolvida com **Spring Boot**, utilizando:
 ### ⚙️ Como executar o projeto
 
 ```bash
-git clone https://github.com/Eboscatto/projeto-java
+git clone https://github.com/Eboscatto/projeto-java-spring-boot
 cd seu-repositório
 mvn spring-boot:run
 ```
@@ -88,7 +88,7 @@ src/
 │   ├── model/
 │   ├── config/
 │   └── MainApplication.java
-└── test/java/com/seuprojeto/
+└── test/java/com/projetoJava/
 ```
 
 ### 🧠 Melhorias possíveis

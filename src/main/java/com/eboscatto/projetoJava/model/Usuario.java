@@ -1,5 +1,6 @@
 package com.eboscatto.projetoJava.model;
 
+
 public class Usuario {
     private String username;
     private String senha;

@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Entity
+@Table(name = "post")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
