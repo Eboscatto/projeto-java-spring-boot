@@ -1,9 +1,19 @@
 package com.eboscatto.projetoJava.model;
 
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "usuarios")
 public class Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
     private String username;
-    private String senha;
+    @Column(nullable = false)
+    private String senhaCriptografada;
 
     // Getters e Setters
 
@@ -15,11 +25,12 @@ public class Usuario {
         this.username = username;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getSenhaCriptografada() {
+        return senhaCriptografada;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setSenhaCriptografada(String senhaCriptografada) {
+
+        this.senhaCriptografada = senhaCriptografada;
     }
 }
