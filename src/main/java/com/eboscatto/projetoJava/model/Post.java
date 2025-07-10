@@ -3,14 +3,19 @@ package com.eboscatto.projetoJava.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
+@Getter
 @Entity
 @Table(name = "post")
 public class Post {
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Setter
     @NotNull(message = "O userId é obrigatório.")
     private int userId;
 
@@ -22,31 +27,8 @@ public class Post {
 
     // Gertters e Setters
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
     public void SetTitle(String title) {
         this.title = title;
-    }
-
-    public String getBody() {
-        return  body;
     }
 
     public void SetBody(String body) {

@@ -1,10 +1,22 @@
 package com.eboscatto.projetoJava.model;
 
 import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
+
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,22 +27,32 @@ public class Usuario {
     @Column(nullable = false)
     private String senhaCriptografada;
 
-    // Getters e Setters
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
 
+    // Getters e Setters
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return senhaCriptografada;
+    }
+
+    @Override
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getSenhaCriptografada() {
-        return senhaCriptografada;
-    }
-
-    public void setSenhaCriptografada(String senhaCriptografada) {
-
-        this.senhaCriptografada = senhaCriptografada;
-    }
+    @Override public boolean isAccountNonExpired() { return true; }
+    @Override public boolean isAccountNonLocked() { return true; }
+    @Override public boolean isCredentialsNonExpired() { return true; }
+    @Override public boolean isEnabled() { return true; }
 }
+
+
+
+
